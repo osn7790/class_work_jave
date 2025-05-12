@@ -19,7 +19,7 @@ public class BankAccountMainTest {
         // 10만원 + 1만원 - 5천원 ==> 10만 5천원
         // 주의! 멀티스레딩 프로그램을 구성할 때 race condition 상태를 만들어 낼 수 있다.
 
-        // rece condition
+        // race condition
         // 의도치 않은 결과가 나타날 수 있다.
 
 
