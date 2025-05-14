@@ -1,4 +1,4 @@
-package bubble.test05;
+package bubble.test06;
 
 public interface Moveable {
     // public avstract 생략 가능

@@ -1,4 +1,4 @@
-package bubble.test07;
+package bubble.game;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

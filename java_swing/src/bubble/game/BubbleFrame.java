@@ -1,4 +1,4 @@
-package bubble.test07;
+package bubble.game;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;
@@ -6,8 +6,11 @@ import java.awt.event.KeyListener;
 
 public class BubbleFrame extends JFrame {
 
+    BubbleFrame mContext = this;
+
     private JLabel backgroundMap;
     private Player player;
+
 
     public BubbleFrame() {
         initData();
@@ -25,7 +28,7 @@ public class BubbleFrame extends JFrame {
         // 루트 패널에 JLable 넣어보기
         setContentPane(backgroundMap);
 
-        player = new Player();
+        player = new Player(mContext);
         setLayout(null); // 좌표기준 (절대 레이아웃)
         setResizable(false); // 리사이즈 조절 막기
         setLocationRelativeTo(null); // JFrame 화면 가운데 배치해줌
@@ -50,7 +53,6 @@ public class BubbleFrame extends JFrame {
             // 키를 누를 때 .. 누르고 있는 이벤트 발생
             @Override
             public void keyPressed(KeyEvent e) {
-                System.out.println("code : " + e.getKeyCode());
                 switch (e.getKeyCode()) {
                     case KeyEvent.VK_LEFT:
                         if (player.isLeft() == false && player.isLeftWallCrash() == false) {
@@ -79,7 +81,6 @@ public class BubbleFrame extends JFrame {
 
             @Override
             public void keyReleased(KeyEvent e) {
-                System.out.println("code : " + e.getKeyCode());
                 switch (e.getKeyCode()) {
                     case KeyEvent.VK_LEFT:
                         player.setLeft(false);
@@ -90,7 +91,9 @@ public class BubbleFrame extends JFrame {
                     case KeyEvent.VK_UP:
                         break;
                     case KeyEvent.VK_SPACE:
-                        add(new Bubble(player));
+                        player.attack();
+
+                        // add(new Bubble(player));
                         break;
                 }
             }
@@ -100,6 +103,8 @@ public class BubbleFrame extends JFrame {
 
     // 테스트 코드
     public static void main(String[] args) {
+        // BubbleFrame (이 하위에 생성되는 모든 객체들에 주소값에 접근할 수 있다.)
+        // main 함수를 가질 수 있는 클레스는 Context 라는 개념이 생길 수 있다.
         new BubbleFrame();
     }
 

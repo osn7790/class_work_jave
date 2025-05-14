@@ -1,8 +1,17 @@
-package bubble.test07;
+package bubble.game;
+
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.swing.*;
 
+@Getter
+@Setter
+
+
 public class Player extends JLabel implements Moveable {
+    // Context -> 별 5개 짜리
+    private BubbleFrame mContext;
 
     private int x;
     private int y;
@@ -29,97 +38,10 @@ public class Player extends JLabel implements Moveable {
     private PlayerWay playerWay;
 
 
-    @Override
-    public int getX() {
-        return x;
-    }
-
-    @Override
-    public int getY() {
-        return y;
-    }
-
-    public ImageIcon getPlayerR() {
-        return playerR;
-    }
-
-    public ImageIcon getPlayerL() {
-        return playerL;
-    }
-
-    public int getSPEED() {
-        return SPEED;
-    }
-
-    public int getJUMP_SPEED() {
-        return JUMP_SPEED;
-    }
-
-    public boolean isLeft() {
-        return left;
-    }
-
-    public boolean isRight() {
-        return right;
-    }
-
-    public boolean isUp() {
-        return up;
-    }
-
-    public boolean isDown() {
-        return down;
-    }
-
-    public boolean isLeftWallCrash() {
-        return leftWallCrash;
-    }
-
-    public boolean isRightWallCrash() {
-        return rightWallCrash;
-    }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
-
-    public void setPlayerR(ImageIcon playerR) {
-        this.playerR = playerR;
-    }
-
-    public void setPlayerL(ImageIcon playerL) {
-        this.playerL = playerL;
-    }
-
-    public void setLeft(boolean left) {
-        this.left = left;
-    }
-
-    public void setRight(boolean right) {
-        this.right = right;
-    }
-
-    public void setUp(boolean up) {
-        this.up = up;
-    }
-
-    public void setDown(boolean down) {
-        this.down = down;
-    }
-
-    public void setLeftWallCrash(boolean leftWallCrash) {
-        this.leftWallCrash = leftWallCrash;
-    }
-
-    public void setRightWallCrash(boolean rightWallCrash) {
-        this.rightWallCrash = rightWallCrash;
-    }
-
-    public Player() {
+    // 나를 생성 시켜주는 BubbleFrame 의 주소값을 전달 받을 수 있도록 설계하자.
+    public Player(BubbleFrame mContext) {
+        // Context  --> 문맥(환경정보)
+        this.mContext = mContext;
 
         initData();
         setInitLayout();
@@ -169,11 +91,6 @@ public class Player extends JLabel implements Moveable {
             } // end of run()
         }).start();
 
-    }
-
-
-    public PlayerWay getPlayerWay() {
-        return playerWay;
     }
 
     @Override
@@ -246,4 +163,16 @@ public class Player extends JLabel implements Moveable {
         }).start();
 
     }
+
+    public void attack() {
+        System.out.println("물방울 객체 생성");
+        // JLabel에 부모 .... add() 호출함
+
+
+        // 1. 콜백 메서드를 직접 설계해서 완성 시킬 수 있다.
+        // BubbleFrame --> add(new Bubble(this));
+        // 부모 클래스 기능.add() 가능해 집니다.
+        mContext.add(new Bubble(this));
+    }
+
 }

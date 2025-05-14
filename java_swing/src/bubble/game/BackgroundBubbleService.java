@@ -1,6 +1,4 @@
-package bubble.test07;
-
-import bubble.test06.BackgroundPlayerService;
+package bubble.game;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

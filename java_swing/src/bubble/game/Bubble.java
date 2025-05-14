@@ -1,6 +1,12 @@
-package bubble.test07;
+package bubble.game;
+
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.swing.*;
+
+@Getter
+@Setter
 
 public class Bubble extends JLabel implements Moveable {
 
@@ -67,70 +73,6 @@ public class Bubble extends JLabel implements Moveable {
 
     }
 
-
-    //getter
-
-
-    @Override
-    public int getX() {
-        return x;
-    }
-
-    @Override
-    public int getY() {
-        return y;
-    }
-
-    public boolean isLeft() {
-        return left;
-    }
-
-    public boolean isRight() {
-        return right;
-    }
-
-    public boolean isUp() {
-        return up;
-    }
-
-    public ImageIcon getBubble() {
-        return bubble;
-    }
-
-    public Player getPlayer() {
-        return player;
-    }
-
-    // setter
-
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
-
-    public void setLeft(boolean left) {
-        this.left = left;
-    }
-
-    public void setRight(boolean right) {
-        this.right = right;
-    }
-
-    public void setUp(boolean up) {
-        this.up = up;
-    }
-
-    public void setBubble(ImageIcon bubble) {
-        this.bubble = bubble;
-    }
-
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
 
     @Override
     public void left() {
