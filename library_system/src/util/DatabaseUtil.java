@@ -1,8 +1,14 @@
 package util;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+
+@Data
 
 /**
  * 데이터 베이스 연결을 관리하는 유틸리티 클래스
